@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
 
   const login = (email, nickname) => {
     if (!isAllowedCampusEmail(email)) {
-      throw new Error(`학교 이메일(@${ALLOWED_DOMAIN})만 로그인 가능해요.`);
+      throw new Error(`학교 이메일(@${ALLOWED_DOMAIN})만 로그인할 수 있습니다.`);
     }
     const next = { email, nickname };
     setUser(next);
