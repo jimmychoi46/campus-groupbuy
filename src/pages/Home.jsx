@@ -9,7 +9,7 @@ export default function Home() {
     <div className="card">
       <h1>캠퍼스 한정 중고·공동구매 플랫폼</h1>
       <p className="muted">
-        같은 학교 학생끼리만 거래/공구를 할 수 있게 만든 MVP 데모입니다.
+        같은 학교 학생끼리만 거래/공구를 할 수 있는 중고거래 플랫폼입니다.
       </p>
 
       {!user ? (
