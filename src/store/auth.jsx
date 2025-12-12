@@ -23,11 +23,6 @@ export function AuthProvider({ children }) {
     if (!email || email.trim() === "") {
       throw new Error("이메일을 입력해주세요.");
     }
-
-    // 2. 비밀번호 입력 여부 확인
-    if (!password || password.trim() === "") {
-      throw new Error("비밀번호를 입력해주세요.");
-    }
     
     if (!isAllowedCampusEmail(email)) {
       throw new Error(`학교 이메일(@${ALLOWED_DOMAIN})을 사용하여 로그인 해주세요.`);
