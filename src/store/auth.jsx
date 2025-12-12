@@ -2,7 +2,7 @@ import React, { createContext, useContext, useMemo, useState } from "react";
 
 const AuthCtx = createContext(null);
 
-// 학교 이메일 도메인(원하면 바꿔)
+// 학교 이메일 도메인
 const ALLOWED_DOMAIN = "gwnu.ac.kr";
 
 function isAllowedCampusEmail(email) {
