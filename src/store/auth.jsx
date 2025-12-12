@@ -23,6 +23,10 @@ export function AuthProvider({ children }) {
     if (!email || email.trim() === "") {
       throw new Error("이메일을 입력해주세요.");
     }
+
+    if (!nickname || nickname.trim() === "") {
+      throw new Error("닉네임을 입력해주세요.");
+    }
     
     if (!isAllowedCampusEmail(email)) {
       throw new Error(`학교 이메일(@${ALLOWED_DOMAIN})을 사용하여 로그인 해주세요.`);
