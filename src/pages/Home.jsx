@@ -30,7 +30,7 @@ export default function Home() {
         </div>
         <div className="mini">
           <h3>공동구매</h3>
-          <p className="muted">목표 인원 달성 시 자동 마감(데모)</p>
+          <p className="muted">목표 인원 달성 시 자동 마감</p>
         </div>
       </div>
     </div>
