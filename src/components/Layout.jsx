@@ -42,7 +42,7 @@ export default function Layout() {
       </main>
 
       <footer className="footer">
-        <small>  캠퍼스 계정(@{ALLOWED_DOMAIN})만 접근 가능</small>
+        <small>  캠퍼스 이메일(@{ALLOWED_DOMAIN})로 이용 가능</small>
       </footer>
     </div>
   );
