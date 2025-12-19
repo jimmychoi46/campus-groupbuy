@@ -27,7 +27,7 @@ export default function Listings() {
   }, [list, q]);
 
   const onToggle = async (id) => {
-    await toggleListing(id);
+    await toggleListing(id, user.email);
     await load();
   };
 
