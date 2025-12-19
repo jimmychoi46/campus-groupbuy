@@ -47,8 +47,7 @@ export default function ListingDetail() {
       </div>
 
       <p className="muted">
-        {item.type === "GROUP" ? "공동구매" : "중고"} · {item.campus} ·{" "}
-        {item.owner?.nickname || item.owner}
+        {item.type === "GROUP" ? "공동구매" : "중고"} · {item.campus} · {item.ownerName}
       </p>
 
       <div className="divider" />
