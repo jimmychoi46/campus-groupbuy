@@ -93,7 +93,8 @@ export default function Listings() {
                 <button 
                   className="btn danger"
                   style={{
-                    padding: "12px 24px",
+                    width: "100%"
+                    padding: "30px 0",
                     fontSize: "16px",
                     marginTop: 12
                   }}
