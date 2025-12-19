@@ -51,7 +51,7 @@ export default function Listings() {
       ) : (
         <div className="grid">
           {filtered.map((x) => (
-            <div key={x.id} className="card">
+            <div key={x.id} className="card" style={{ display: "flex", flexDirection: "column" }}>
               <div className="row space">
                 <span className={`pill ${x.type === "GROUP" ? "pill2" : ""}`}>
                   {x.type === "GROUP" ? "공동구매" : "중고"}
@@ -89,9 +89,14 @@ export default function Listings() {
                 </button>
               </div>
               
-              <div style={{ display: "flex", justifyContent: "center", marginTop: 10 }}>
+              <div style={{ display: "flex", justifyContent: "center", marginTop: "auto" }}>
                 <button 
                   className="btn danger"
+                  style={{
+                    padding: "12px 24px",
+                    fontSize: "16px",
+                    marginTop: 12
+                  }}
                   onClick={async () => {
                     if (!window.confirm("정말 삭제하시겠습니까?")) return; 
                     await fetch(`/api/listings/${x.id}`, { method: "DELETE" }); 
