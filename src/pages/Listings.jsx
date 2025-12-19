@@ -62,7 +62,9 @@ export default function Listings() {
                   {x.type === "GROUP" ? "공동구매" : "중고"}
                 </span>
                 <span className={`pill ${x.status === "OPEN" ? "ok" : "no"}`}>
-                  {x.status === "OPEN" ? "진행중" : "마감"}
+                  {x.type === "USED"
+                    ? (x.status === "OPEN" ? "판매중" : "판매완료")
+                    : (x.status === "OPEN" ? "진행중" : "마감")}
                 </span>
               </div>
 
