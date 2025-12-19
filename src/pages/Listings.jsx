@@ -7,7 +7,6 @@ import { useAuth } from "../store/auth";
 
 export default function Listings() {
   const { user } = useAuth();
-  
   const [list, setList] = useState([]);
   const [q, setQ] = useState("");
   const [type, setType] = useState("ALL");
@@ -92,7 +91,7 @@ export default function Listings() {
               /*마감 버튼 */
               <div className="row space" style={{ marginTop: 12 }}>
                 <Link className="btn" to={`/listings/${x.id}`}>상세</Link>
-                {(user?.email === x.ownerEmail || user?.role === "ADMIN")&& (
+                {user?.email === x.ownerEmail && (
                   <button className="btn" onClick={() => onToggle(x.id)}>
                     {x.type === "USED" 
                       ? (x.status === "OPEN" ? "판매완료 처리" : "판매중으로 변경") 
@@ -102,7 +101,7 @@ export default function Listings() {
               </div>
 
              /* 삭제 버튼 */
-             {(user?.email === x.ownerEmail || user?.role === "ADMIN") && ( 
+             {user?.email === x.ownerEmail && ( 
               <div style={{ display: "flex", justifyContent: "center", marginTop: "auto" }}>
                 <button 
                   className="btn danger"
