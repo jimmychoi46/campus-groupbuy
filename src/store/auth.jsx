@@ -19,7 +19,8 @@ export function AuthProvider({ children }) {
   });
 
   const login = (email, nickname) => {
-    
+
+    /* 이메일 미입력 시 오류 발생 */
     if (!email || email.trim() === "") {
       throw new Error("이메일을 입력해주세요.");
     }
