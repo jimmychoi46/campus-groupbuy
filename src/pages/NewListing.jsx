@@ -102,12 +102,18 @@ export default function NewListing() {
           <textarea value={desc} onChange={(e) => setDesc(e.target.value)} rows={4} />
         </label>
         {type === "USED" && (
-         <label>
-          <input type="checkbox" checked={negotiable} onChange={(e) => setNegotiable(e.target.checked)}
-          />
-          가격 협상 가능
-        </label>
+          <div style={{ marginTop: 12 }}>
+            <label style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <input 
+                type="checkbox" 
+                checked={negotiable} 
+                onChange={(e) => setNegotiable(e.target.checked)} 
+              />
+              <b>가격 협상 가능</b>
+            </label>
+           </div>
         )}
+
 
 
 
