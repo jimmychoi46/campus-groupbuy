@@ -94,7 +94,7 @@ export default function Listings() {
                   className="btn danger"
                   style={{
                     width: "100%",
-                    padding: "30px 0",
+                    padding: "15px 0",
                     fontSize: "16px",
                     marginTop: 12
                   }}
