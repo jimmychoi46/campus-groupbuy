@@ -88,7 +88,7 @@ export default function Listings() {
                 </> 
               )}
               
-              /*마감 버튼 */
+             
               <div className="row space" style={{ marginTop: 12 }}>
                 <Link className="btn" to={`/listings/${x.id}`}>상세</Link>
                 {user?.email === x.ownerEmail && (
@@ -100,7 +100,7 @@ export default function Listings() {
                 )}
               </div>
 
-             /* 삭제 버튼 */
+             
              {user?.email === x.ownerEmail && ( 
               <div style={{ display: "flex", justifyContent: "center", marginTop: "auto" }}>
                 <button 
