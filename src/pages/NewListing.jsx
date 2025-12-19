@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { createListing } from "../api";
@@ -12,12 +12,30 @@ export default function NewListing() {
   const [price, setPrice] = useState(10000);
   const [campus, setCampus] = useState("강릉캠퍼스");
   const [desc, setDesc] = useState("");
+  const [deadline, setDeadline] = useState(""); 
+  const [negotiable, setNegotiable] = useState(false);
   const [target, setTarget] = useState(10);
   const [err, setErr] = useState("");
+
+ useEffect(() => {
+   if (type === "USED") {
+     setDeadline(""); 
+     setTarget(10); 
+   } 
+   
+   if (type === "GROUP") {
+     setNegotiable(false); 
+   } 
+ }, [type]);
 
   const submit = async (e) => {
     e.preventDefault();
     setErr("");
+
+    if (type === "GROUP" && !deadline) {
+      setErr("공동구매는 마감일이 지정되어야 합니다. 마감일을 선택해 주세요."); 
+      return; 
+    }
     try {
       const created = await createListing({
         type,
@@ -25,10 +43,10 @@ export default function NewListing() {
         price: Number(price),
         campus,
         desc: desc.trim(),
+        deadline: type === "GROUP" && deadline ? new Date(deadline).toISOString() : null, 
+        negotiable: type === "USED" ? negotiable : false,
         groupTarget: type === "GROUP" ? Number(target) : null,
-        ownerEmail: user.email,
-        ownerName: user.nickname,
-      });
+        ownerId: user.id     });
       nav(`/listings/${created.id}`);
     } catch (e2) {
       setErr(e2.message || "등록 실패");
@@ -66,16 +84,32 @@ export default function NewListing() {
         </label>
 
         {type === "GROUP" && (
-          <label>
+         <>
+           <label>
+            마감일
+            <input type="date" value={deadline} onChange={(e) => setDeadline(e.target.value)} />
+           </label>
+           <label>
             목표 인원
             <input type="number" value={target} onChange={(e) => setTarget(e.target.value)} min="2" />
-          </label>
+           </label>
+         </>
         )}
+
 
         <label>
           설명
           <textarea value={desc} onChange={(e) => setDesc(e.target.value)} rows={4} />
         </label>
+        {type === "USED" && (
+         <label>
+          <input type="checkbox" checked={negotiable} onChange={(e) => setNegotiable(e.target.checked)}
+          />
+          가격 협상 가능
+        </label>
+        )}
+
+
 
         {err && <div className="error">{err}</div>}
         <button className="btn primary" type="submit">등록하기</button>
