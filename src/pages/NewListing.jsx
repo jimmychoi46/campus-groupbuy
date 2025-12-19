@@ -103,7 +103,7 @@ export default function NewListing() {
         </label>
 {type === "USED" && ( 
   <div style={{ marginTop: 12, display: "flex", justifyContent: "flex-start", alignItems: "center" }}> 
-    <span style={{ fontWeight: "bold", marginRight: 8 }}>가격 협상 가능 여부 선택</span> 
+    <span style={{ fontWeight: "bold", marginRight: 8 }}>가격 협상 가능 여부</span> 
      <input 
        type="checkbox" 
        checked={negotiable} onChange={(e) => setNegotiable(e.target.checked)} 
