@@ -64,10 +64,22 @@ export default function Listings() {
               <h3 style={{ marginTop: 8 }}>{x.title}</h3>
               <p className="muted">
                 {x.campus} · {x.ownerName} · {Number(x.price).toLocaleString()}원
+                {x.type === "USED" && (
+                  <> · 협상 {x.negotiable ? "가능" : "불가"}</>
+                )}
               </p>
 
               {x.type === "GROUP" && (
-                <p className="muted">참여 {x.groupJoined}/{x.groupTarget}</p>
+                <> 
+                  <p className="muted"> 
+                    참여 {x.groupJoined}/{x.groupTarget} 
+                  </p> 
+                  {x.deadline && (
+                    <p className="muted"> 
+                      마감일 {new Date(x.deadline).toLocaleDateString()} 
+                    </p>
+                  )} 
+                </> 
               )}
 
               <div className="row space" style={{ marginTop: 12 }}>
