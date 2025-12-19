@@ -23,7 +23,7 @@ export default function NewListing() {
   useEffect(() => {
    if (type === "USED") {
      setDeadline(""); 
-     setTarget(null); 
+     setTarget(10); 
    } else if (type === "GROUP") {
      setNegotiable(false); 
    } 
