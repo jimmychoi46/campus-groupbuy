@@ -101,7 +101,12 @@ export default function Listings() {
                   }}
                   onClick={async () => {
                     if (!window.confirm("정말 삭제하시겠습니까?")) return; 
-                    await fetch(`http://localhost:4000/api/listings/${x.id}`, { method: "DELETE" }); 
+                    await fetch(`http://localhost:4000/api/listings/${x.id}`, { 
+                      method: "DELETE",
+                      headers: {
+                        "x-user-email": user.email
+                      }
+                    }); 
                     await load();
                   }} 
                 > 
