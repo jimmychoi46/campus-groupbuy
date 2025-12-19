@@ -29,7 +29,13 @@ export async function joinGroup(id) {
   return res.json();
 }
 
-export async function toggleListing(id) {
-  const res = await fetch(`${API}/listings/${id}/toggle`, { method: "POST" });
-  return res.json();
+export async function toggleListing(id, userEmail) {
+  const res = await fetch(`http://127.0.0.1:4000/api/listings/${id}/toggle`, {
+    method: "POST", 
+    headers: { "Content-Type": "application/json", "x-user-email": userEmail 
+    } 
+  });
+  
+  if (!res.ok) throw new Error("Toggle failed"); 
+  return res.json(); 
 }
