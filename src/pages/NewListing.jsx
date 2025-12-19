@@ -7,6 +7,7 @@ export default function NewListing() {
   const { user } = useAuth();
   const nav = useNavigate();
 
+  /* 협상 가능 여부, 마감일 속성 추가 */
   const [type, setType] = useState("USED");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(10000);
@@ -17,13 +18,13 @@ export default function NewListing() {
   const [target, setTarget] = useState(10);
   const [err, setErr] = useState("");
 
- useEffect(() => {
+  /* 중고거래일 경우 마감일 및 목표인원 필드 초기화, 공동구매일 경우 협상 가능 여부 필드 초기화 */ 
+  
+  useEffect(() => {
    if (type === "USED") {
      setDeadline(""); 
-     setTarget(10); 
-   } 
-   
-   if (type === "GROUP") {
+     setTarget(null); 
+   } else if (type === "GROUP") {
      setNegotiable(false); 
    } 
  }, [type]);
@@ -84,6 +85,8 @@ export default function NewListing() {
           <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} min="0" />
         </label>
 
+        /* 공동구매일 경우 마감일 및 목표 인원을 표시하도록 하고, 협상 가능 여부는 표시하지 않도록 함 */
+        
         {type === "GROUP" && (
          <>
            <label>
@@ -97,11 +100,12 @@ export default function NewListing() {
          </>
         )}
 
-
         <label>
           설명
           <textarea value={desc} onChange={(e) => setDesc(e.target.value)} rows={4} />
         </label>
+
+/* 중고거래일 경우 협상 가능 여부를 표시하도록 하고, 마감일 및 목표 인원은 표시하지 않도록 함.*/
 {type === "USED" && ( 
   <div style={{ marginTop: 12, display: "flex", justifyContent: "flex-start", alignItems: "center" }}> 
     <span style={{ fontWeight: "bold", marginRight: 8 }}>가격 협상 가능 여부</span> 
@@ -111,10 +115,6 @@ export default function NewListing() {
        /> 
   </div> 
 )}
-
-
-
-
         {err && <div className="error">{err}</div>}
         <button className="btn primary" type="submit">등록하기</button>
       </form>
