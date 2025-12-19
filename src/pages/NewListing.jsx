@@ -46,7 +46,8 @@ export default function NewListing() {
         deadline: type === "GROUP" && deadline ? new Date(deadline).toISOString() : null, 
         negotiable: type === "USED" ? negotiable : false,
         groupTarget: type === "GROUP" ? Number(target) : null,
-        ownerId: user.id     });
+        ownerEmail: user.email,
+        ownerName: user.nickname,     });
       nav(`/listings/${created.id}`);
     } catch (e2) {
       setErr(e2.message || "등록 실패");
