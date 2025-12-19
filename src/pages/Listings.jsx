@@ -91,12 +91,16 @@ export default function Listings() {
 
               <div className="row space" style={{ marginTop: 12 }}>
                 <Link className="btn" to={`/listings/${x.id}`}>상세</Link>
-                <button className="btn" onClick={() => onToggle(x.id)}>
-                  {x.status === "OPEN" ? "마감" : "재오픈"}
-                </button>
+                {(user?.email === x.ownerEmail || user?.role === "ADMIN")&& (
+                  <button className="btn" onClick={() => onToggle(x.id)}>
+                    {x.type === "USED" 
+                      ? (x.status === "OPEN" ? "판매완료 처리" : "판매중으로 변경") 
+                      : (x.status === "OPEN" ? "마감" : "재오픈")} 
+                  </button> 
+                )}
               </div>
 
-             {user?.email === x.ownerEmail && ( 
+             {(user?.email === x.ownerEmail || user?.role === "ADMIN") && ( 
               <div style={{ display: "flex", justifyContent: "center", marginTop: "auto" }}>
                 <button 
                   className="btn danger"
