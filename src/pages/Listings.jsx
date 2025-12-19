@@ -31,7 +31,7 @@ export default function Listings() {
     <div className="stack">
       <div className="card">
         <div className="row space">
-          <h2>게시글 (DB 연동)</h2>
+          <h2>게시글)</h2>
           <Link className="btn primary" to="/listings/new">+ 글 등록</Link>
         </div>
 
