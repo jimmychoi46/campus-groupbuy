@@ -55,7 +55,7 @@ export default function NewListing() {
 
   return (
     <div className="card">
-      <h2>글 등록)</h2>
+      <h2>글 등록</h2>
       <form className="form" onSubmit={submit}>
         <label>
           유형
