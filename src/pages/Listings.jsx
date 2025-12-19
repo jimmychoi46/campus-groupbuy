@@ -88,7 +88,8 @@ export default function Listings() {
                   {x.status === "OPEN" ? "마감" : "재오픈"}
                 </button>
               </div>
-              
+
+             {user?.email === x.ownerEmail && ( 
               <div style={{ display: "flex", justifyContent: "center", marginTop: "auto" }}>
                 <button 
                   className="btn danger"
@@ -100,13 +101,14 @@ export default function Listings() {
                   }}
                   onClick={async () => {
                     if (!window.confirm("정말 삭제하시겠습니까?")) return; 
-                    await fetch(`/api/listings/${x.id}`, { method: "DELETE" }); 
+                    await fetch(`http://localhost:4000/api/listings/${x.id}`, { method: "DELETE" }); 
                     await load();
                   }} 
                 > 
                     삭제 
                 </button> 
               </div>
+             )}
             </div>
           ))}
         </div>
