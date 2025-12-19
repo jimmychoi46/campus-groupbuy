@@ -2,7 +2,11 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchListings, toggleListing } from "../api";
 
+
+
 export default function Listings() {
+  const { user } = useAuth();
+  
   const [list, setList] = useState([]);
   const [q, setQ] = useState("");
   const [type, setType] = useState("ALL");
