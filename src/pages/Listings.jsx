@@ -88,6 +88,19 @@ export default function Listings() {
                   {x.status === "OPEN" ? "마감" : "재오픈"}
                 </button>
               </div>
+              
+              <div style={{ display: "flex", justifyContent: "center", marginTop: 10 }}>
+                <button 
+                  className="btn danger"
+                  onClick={async () => {
+                    if (!window.confirm("정말 삭제하시겠습니까?")) return; 
+                    await fetch(`/api/listings/${x.id}`, { method: "DELETE" }); 
+                    await load();
+                  }} 
+                > 
+                    삭제 
+                </button> 
+              </div>
             </div>
           ))}
         </div>
