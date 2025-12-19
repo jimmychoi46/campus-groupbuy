@@ -55,7 +55,7 @@ export default function NewListing() {
 
   return (
     <div className="card">
-      <h2>글 등록 (DB 저장)</h2>
+      <h2>글 등록)</h2>
       <form className="form" onSubmit={submit}>
         <label>
           유형
@@ -101,18 +101,15 @@ export default function NewListing() {
           설명
           <textarea value={desc} onChange={(e) => setDesc(e.target.value)} rows={4} />
         </label>
-        {type === "USED" && (
-          <div style={{ marginTop: 12 }}>
-            <label style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <input 
-                type="checkbox" 
-                checked={negotiable} 
-                onChange={(e) => setNegotiable(e.target.checked)} 
-              />
-              <b>가격 협상 가능</b>
-            </label>
-           </div>
-        )}
+{type === "USED" && ( 
+  <div style={{ marginTop: 12, display: "flex", justifyContent: "flex-start", alignItems: "center" }}> 
+    <span style={{ fontWeight: "bold", marginRight: 8 }}>가격 협상 가능</span> 
+     <input 
+       type="checkbox" 
+       checked={negotiable} onChange={(e) => setNegotiable(e.target.checked)} 
+       /> 
+  </div> 
+)}
 
 
 
